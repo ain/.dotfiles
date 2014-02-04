@@ -1,0 +1,12 @@
+export PATH=/Applications/XAMPP/xamppfiles/bin:$PATH
+
+# Set XAMPP PHP instance
+echo $PATH | grep -q -s "/php"
+if [ $? -eq 1 ]; then
+    PATH=/Applications/XAMPP/xamppfiles/bin:$PATH
+    export PATH
+fi
+
+# enable console highlighting
+export CLICOLOR=1
+export LSCOLORS=gxfxcxdxbxegedabagacad
