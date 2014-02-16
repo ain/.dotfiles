@@ -9,6 +9,9 @@ fi
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
-export PATH=/opt/local/bin:/opt/local/sbin:$HOME/.rvm/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# RVM
+source ~/.rvm/scripts/rvm
 
 alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
