@@ -15,5 +15,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 source ~/.rvm/scripts/rvm
 
 alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
+alias lla="ls -la"
 
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
