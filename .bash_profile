@@ -1,10 +1,3 @@
-# Set XAMPP PHP instance
-echo $PATH | grep -q -s "/php"
-if [ $? -eq 1 ]; then
-    PATH=/Applications/XAMPP/xamppfiles/bin:$PATH
-    export PATH
-fi
-
 # enable console highlighting
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -20,3 +13,10 @@ nvm use 0.10 # loads latest Node 0.10.x
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
+
+# Set XAMPP PHP instance
+echo $PATH | grep -q -s "/php"
+if [ $? -eq 1 ]; then
+    PATH=/Applications/XAMPP/xamppfiles/bin:$PATH
+    export PATH
+fi
