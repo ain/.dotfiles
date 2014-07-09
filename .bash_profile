@@ -5,6 +5,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
 alias lla="ls -la"
 alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active' | egrep -o -m 1 '^[^\t:]+' | xargs ipconfig getifaddr; curl ipecho.net/plain; echo"
+alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
 
 cpuload() {
   for i in {1..20}; do
