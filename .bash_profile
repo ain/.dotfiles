@@ -8,7 +8,7 @@ alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
 alias claimspace="sudo rm -rf /var/vm/sleepimage; df -h"
 alias lsusb="system_profiler SPUSBDataType"
-alias sheload="source ~/.bash_profile"
+alias sheload="source ~/.bash_profile; echo 'Bash reloaded!'"
 
 epuload() {
   for i in {1..20}; do
