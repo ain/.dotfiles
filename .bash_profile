@@ -6,6 +6,7 @@ alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-repor
 alias lla="ls -la"
 alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active' | egrep -o -m 1 '^[^\t:]+' | xargs ipconfig getifaddr; curl ipecho.net/plain; echo"
 alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
+alias spaceemergency="sudo rm -rf /var/vm/sleepimage"
 
 cpuload() {
   for i in {1..20}; do
