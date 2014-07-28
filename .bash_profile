@@ -17,7 +17,6 @@ cpuload() {
 alias cpuload=cpuload
 alias stopload="killall yes"
 
-
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
 # Set XAMPP PHP instance
@@ -29,7 +28,7 @@ fi
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh" # This loads NVM
 nvm use 0.10 # loads latest Node 0.10.x
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
