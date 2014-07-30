@@ -5,12 +5,12 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 # Colors
 ESC_SEQ="\x1b["
 COL_RESET=$ESC_SEQ"39;49;00m"
-COL_RED=$ESC_SEQ"31;01m"
-COL_GREEN=$ESC_SEQ"32;01m"
-COL_YELLOW=$ESC_SEQ"33;01m"
-COL_BLUE=$ESC_SEQ"34;01m"
-COL_MAGENTA=$ESC_SEQ"35;01m"
-COL_CYAN=$ESC_SEQ"36;01m"
+COL_RED=$ESC_SEQ"0;31m"
+COL_GREEN=$ESC_SEQ"0;32m"
+COL_YELLOW=$ESC_SEQ"0;33m"
+COL_BLUE=$ESC_SEQ"0;34m"
+COL_MAGENTA=$ESC_SEQ"0;35m"
+COL_CYAN=$ESC_SEQ"0;36m"
 
 # Aliases
 alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
