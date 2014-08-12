@@ -35,10 +35,16 @@ uniquelines() {
   sort $1 | uniq -u
 }
 
+# Extract lines from 2nd file that do not exist in 1st file
+xdiff() {
+  awk 'FNR==NR{old[$0];next};!($0 in old)' $1 $2 >> $3
+}
+
 alias cpuload=cpuload
 alias stopload="killall yes"
 alias dupelines=dupelines
 alias uniquelines=uniquelines
+alias xdiff=xdiff
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
