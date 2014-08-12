@@ -21,14 +21,24 @@ alias claimspace="sudo rm -rf /var/vm/sleepimage; cleanports"
 alias lsusb="system_profiler SPUSBDataType"
 alias sheload="source ~/.bash_profile; echo -e '$COL_GREEN Bash reloaded! $COL_RESET'"
 
-epuload() {
+cpuload() {
   for i in {1..20}; do
     yes > /dev/null &
   done
 }
 
+dupelines() {
+  sort $1 | uniq -d
+}
+
+uniquelines() {
+  sort $1 | uniq -u
+}
+
 alias cpuload=cpuload
 alias stopload="killall yes"
+alias dupelines=dupelines
+alias uniquelines=uniquelines
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
