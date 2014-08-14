@@ -46,8 +46,8 @@ claimspace() {
     cleanports
   else
     df -h
-    echo -e "$COL_GREEN Space claim complete! $COL_RESET"
   fi
+  echo -e "$COL_GREEN Space claim complete! $COL_RESET"
 }
 
 alias cpuload=cpuload
