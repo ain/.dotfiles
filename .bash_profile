@@ -16,7 +16,6 @@ COL_CYAN=$ESC_SEQ"0;36m"
 alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
 alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active' | egrep -o -m 1 '^[^\t:]+' | xargs ipconfig getifaddr; curl ipecho.net/plain; echo"
 alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
-alias claimspace="sudo rm -rf /var/vm/sleepimage; cleanports"
 alias lsusb="system_profiler SPUSBDataType"
 alias sheload="source ~/.bash_profile; echo -e '$COL_GREEN Bash reloaded! $COL_RESET'"
 
@@ -39,11 +38,24 @@ xdiff() {
   awk 'FNR==NR{old[$0];next};!($0 in old)' $1 $2 >> $3
 }
 
+# Claim space over emergency. Kill possible swaps etc.
+claimspace() {
+  sudo rm -rf /var/vm/sleepimage ~/.Trash/*
+  if [[ $1 == "--full" ]]
+  then
+    cleanports
+  else
+    df -h
+    echo -e "$COL_GREEN Space claim complete! $COL_RESET"
+  fi
+}
+
 alias cpuload=cpuload
 alias stopload="killall yes"
 alias dupelines=dupelines
 alias uniquelines=uniquelines
 alias xdiff=xdiff
+alias claimspace=claimspace
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
