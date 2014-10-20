@@ -18,6 +18,7 @@ alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
 alias lsusb="system_profiler SPUSBDataType"
 alias sheload="source ~/.bash_profile; echo -e '$COL_GREEN Bash reloaded! $COL_RESET'"
+alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
 
 cpuload() {
   for i in {1..20}; do
