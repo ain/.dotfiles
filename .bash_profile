@@ -45,9 +45,8 @@ claimspace() {
   if [[ $1 == "--full" ]]
   then
     cleanports
-  else
-    df -h
   fi
+  df -h
   echo -e "$COL_GREEN Space claim complete! $COL_RESET"
 }
 
