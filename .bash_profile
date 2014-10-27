@@ -77,5 +77,5 @@ nvm use 0.10 # loads latest Node 0.10.x
 ##
 
 # ImageMagick configuration (Binary distributed into /opt/local)
-export MAGICK_HOME=/opt/local
-export DYLD_LIBRARY_PATH=/opt/local/lib/
+#export MAGICK_HOME=/opt/local
+#export DYLD_LIBRARY_PATH=/opt/local/lib/
