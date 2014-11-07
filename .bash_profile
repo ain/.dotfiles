@@ -59,12 +59,8 @@ alias claimspace=claimspace
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
-# Set XAMPP PHP instance
-echo $PATH | grep -q -s "/php"
-if [ $? -eq 1 ]; then
-    PATH=/Applications/XAMPP/xamppfiles/bin:$PATH
-    export PATH
-fi
+# MySQL
+PATH=/usr/local/mysql/bin:$PATH
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
@@ -72,9 +68,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 nvm use 0.10 # loads latest Node 0.10.x
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-##
-# Your previous /Users/ain/.bash_profile file was backed up as /Users/ain/.bash_profile.macports-saved_2014-10-24_at_21:43:46
-##
 
 # ImageMagick configuration (Binary distributed into /opt/local)
 #export MAGICK_HOME=/opt/local
