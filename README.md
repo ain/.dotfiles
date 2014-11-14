@@ -1,6 +1,6 @@
 # .dotfiles
 
-My various dotfiles.
+My various dotfiles for Mac OS X Yosemite and upwards.
 
 ## Tips
 
