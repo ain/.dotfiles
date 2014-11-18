@@ -50,12 +50,30 @@ claimspace() {
   echo -e "$COL_GREEN Space claim complete! $COL_RESET"
 }
 
+vpsbackup() {
+  # Define variables in .vpsbackuprc file:
+  #   mountpoint - path at which backup drive is mounted, e.g. /Volumes/MyBackup
+  #   vpspath - path on server which to back up, e.g. server.com:/var/www/
+  #   mountpath - path of the backup on the backup drive mounted, e.g. /Volumes/Backup/var/www/
+
+  # Read configuration
+  source ~/.vpsbackuprc
+
+  # Mount backup drive
+  mkdir -p $mountpoint
+  mount_afp -i afp:/// $mountpoint
+
+  # Start rsync
+  caffeinate -i rsync -avz --progress --exclude-from '.vpsbackupignore' $vpspath $mountpath
+}
+
 alias cpuload=cpuload
 alias stopload="killall yes"
 alias dupelines=dupelines
 alias uniquelines=uniquelines
 alias xdiff=xdiff
 alias claimspace=claimspace
+alias vpsbackup=vpsbackup
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
