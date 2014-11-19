@@ -19,6 +19,7 @@ alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df
 alias lsusb="system_profiler SPUSBDataType"
 alias sheload="source ~/.bash_profile; echo -e '$COL_GREEN Bash reloaded! $COL_RESET'"
 alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
+alias mysqll="mysql --auto-rehash -u root -p"
 
 cpuload() {
   for i in {1..20}; do
