@@ -21,7 +21,7 @@ alias sheload="source ~/.bash_profile; echo -e '$COL_GREEN Bash reloaded! $COL_R
 alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
 
 # MySQL
-export MYSQL_HOME=/usr/local/mysql
+MYSQL_HOME=/usr/local/mysql
 alias mysqlstart="sudo $MYSQL_HOME/bin/mysqld_safe &"
 alias mysqlstop="sudo $MYSQL_HOME/bin/mysqladmin shutdown"
 alias mysqll="mysql --auto-rehash -u root -p"
