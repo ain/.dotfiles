@@ -22,7 +22,7 @@ alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
 
 # MySQL
 MYSQL_HOME=/usr/local/mysql
-alias mysqlstart="sudo $MYSQL_HOME/bin/mysqld_safe &"
+alias mysqlstart="sudo $MYSQL_HOME/bin/mysqld_safe --local-infile=1 --user=root &"
 alias mysqlstop="sudo $MYSQL_HOME/bin/mysqladmin shutdown"
 alias mysqll="mysql --auto-rehash -u root -p"
 
