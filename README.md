@@ -5,9 +5,9 @@ My various dotfiles for Mac OS X Yosemite and upwards.
 ## Installation
 
 1. Make sure the following files are backed up, if applicable:
-  - ~/.gitignore
-  - ~/.bash_profile
-  - ~/.tmux.conf
+  - `~/.gitignore`
+  - `~/.bash_profile`
+  - `~/.tmux.conf`
 2. Run `./install.sh`
 
 ## Tips
