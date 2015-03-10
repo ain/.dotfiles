@@ -1,7 +1,17 @@
-echo "Installing press and hold app bindings..."
-defaults write -g ApplePressAndHoldEnabled -bool true
-# TODO autodetect default keyboard
-# defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleSelectedInputSources | egrep -w 'KeyboardLayout Name' | sed -E 's/^.+ = \"?([^\"]+)\"?;$/\\1/'
-sudo mv /System/Library/Input\ Methods/PressAndHold.app/Contents/Resources/Keyboard-et.plist ~/Downloads/Keyboard-et.backup.plist
-sudo ln -s ~/.dotfiles/Keyboard-et.plist /System/Library/Input\ Methods/PressAndHold.app/Contents/Resources/Keyboard-et.plist
-echo "Complete."
+echo "Installing dotfiles..."
+
+PWD=`pwd`
+
+echo "  installing global Git ignore configuration"
+unlink ~/.gitignore
+ln -s $PWD/.gitignore ~/.gitignore
+
+echo "  installing Bash profile"
+unlink ~/.bash_profile
+ln -s $PWD/.bash_profile ~/.bash_profile
+
+echo "  installing tmux configuration"
+unlink ~/.tmux.conf
+ln -s $PWD/.tmux.conf ~/.tmux.conf
+
+echo "Installation complete!"
