@@ -87,6 +87,7 @@ alias uniquelines=uniquelines
 alias xdiff=xdiff
 alias claimspace=claimspace
 alias vpsbackup=vpsbackup
+alias fproc="ps aux | grep $1"
 
 PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
 
