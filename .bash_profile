@@ -89,11 +89,20 @@ alias claimspace=claimspace
 alias vpsbackup=vpsbackup
 alias fproc="ps aux | grep $1"
 
-PATH=$PATH:$HOME/.drush # Add Drush to PATH for Drupal automation
+# Drush
+PATH=$PATH:$HOME/.drush
 
+# MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
-[[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh" # This loads NVM
-nvm use 0.10 # loads latest Node 0.10.x
+# Docker
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 
+# NVM
+[[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
+nvm use 0.10
+
+# RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
