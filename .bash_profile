@@ -55,8 +55,10 @@ xdiff() {
 # Claim space over emergency. Kill possible swaps etc.
 claimspace() {
   sudo rm -rf /var/vm/sleepimage ~/.Trash/*
-  if [[ $1 == "--full" ]]
-  then
+  if hash docker 2>/dev/null; then
+    docker rm $(docker ps -a -q)
+  fi
+  if [[ $1 == "--full" ]]; then
     cleanports
   fi
   df -h
