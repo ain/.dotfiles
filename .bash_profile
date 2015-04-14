@@ -53,10 +53,12 @@ xdiff() {
 }
 
 # Claim space over emergency. Kill possible swaps etc.
+# TODO implement levels
 claimspace() {
   sudo rm -rf /var/vm/sleepimage ~/.Trash/*
   if hash docker 2>/dev/null; then
     docker rm $(docker ps -a -q)
+    docker rmi $(docker images -q)
   fi
   if [[ $1 == "--full" ]]; then
     cleanports
