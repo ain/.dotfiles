@@ -58,7 +58,7 @@ claimspace() {
   sudo rm -rf /var/vm/sleepimage ~/.Trash/*
   if hash docker 2>/dev/null; then
     docker rm $(docker ps -a -q)
-    docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+    docker rmi $(docker images --filter dangling=true -q)
   fi
   if [[ $1 == "--full" ]]; then
     cleanports
