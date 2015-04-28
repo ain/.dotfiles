@@ -1,9 +1,0 @@
-[user]
-	name = Ain Tohvri
-	email = ain@flashbit.net
-[core]
-	excludesfile = ~/.gitignore
-[credential]
-	helper = osxkeychain
-[push]
-	default = simple
