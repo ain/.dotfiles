@@ -110,7 +110,7 @@ alias dockerup="caffeinate docker-compose up && terminal-notifier -message 'Dock
 
 # NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
-nvm use 0.10
+nvm use 0.12
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
