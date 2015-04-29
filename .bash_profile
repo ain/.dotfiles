@@ -103,10 +103,10 @@ export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 
-# Docker Compose
 # TODO abstraction for notifications
 alias dockerbuild="caffeinate docker-compose build && terminal-notifier -message 'Docker build finished!' -title 'Docker' -activate com.apple.Terminal"
 alias dockerup="caffeinate docker-compose up && terminal-notifier -message 'Docker should be up!' -title 'Docker' -activate com.apple.Terminal"
+alias dockerexec="docker exec -it $(docker ps -aq | head -n 1) bash -l"
 
 # NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
