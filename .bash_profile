@@ -103,18 +103,23 @@ export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 
+# TODO complete against #8
 dockerexec() {
   id=docker ps -aq | head -n 1
   docker exec -it $id bash -l
 }
 
-# TODO abstraction for notifications
+# Abstraction for terminal-notifier
+tnotify() {
+  terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
+}
+
 # TODO handle failure notifications
-alias dockerbuild="caffeinate docker-compose build && terminal-notifier -message 'Docker build finished!' -title 'Docker' -activate com.apple.Terminal"
-alias dockerup="caffeinate docker-compose up"
-# FIXME dockerexec fails, ID inadequate
+alias dockerbuild="caffeinate docker-compose build && tnotify 'Docker build finished!' 'Docker'"
+alias dockerup="caffeinate docker-compose up && tnotify 'Docker failed to start!' 'Docker'"
+# FIXME dockerexec fails, ID inadequate, see issue #8
 alias dockerexec="docker exec -it $(docker ps -aq | head -n 1) bash -l"
-alias dockerstop="docker-compose stop"
+alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
 alias dockerps="docker ps -a"
 
 # NVM
