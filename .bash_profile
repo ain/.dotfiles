@@ -108,6 +108,7 @@ export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 alias dockerbuild="caffeinate docker-compose build && terminal-notifier -message 'Docker build finished!' -title 'Docker' -activate com.apple.Terminal"
 alias dockerup="caffeinate docker-compose up"
 alias dockerexec="docker exec -it $(docker ps -aq | head -n 1) bash -l"
+alias dockerstop="docker-compose stop"
 
 # NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
