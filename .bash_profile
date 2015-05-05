@@ -109,6 +109,7 @@ alias dockerbuild="caffeinate docker-compose build && terminal-notifier -message
 alias dockerup="caffeinate docker-compose up"
 alias dockerexec="docker exec -it $(docker ps -aq | head -n 1) bash -l"
 alias dockerstop="docker-compose stop"
+alias dockerps="docker ps -a"
 
 # NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
