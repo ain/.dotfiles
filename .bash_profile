@@ -103,6 +103,11 @@ export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 
+dockerexec() {
+  id=docker ps -aq | head -n 1
+  docker exec -it $id bash -l
+}
+
 # TODO abstraction for notifications
 # TODO handle failure notifications
 alias dockerbuild="caffeinate docker-compose build && terminal-notifier -message 'Docker build finished!' -title 'Docker' -activate com.apple.Terminal"
