@@ -107,6 +107,7 @@ export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 # TODO handle failure notifications
 alias dockerbuild="caffeinate docker-compose build && terminal-notifier -message 'Docker build finished!' -title 'Docker' -activate com.apple.Terminal"
 alias dockerup="caffeinate docker-compose up"
+# FIXME dockerexec fails, ID inadequate
 alias dockerexec="docker exec -it $(docker ps -aq | head -n 1) bash -l"
 alias dockerstop="docker-compose stop"
 alias dockerps="docker ps -a"
