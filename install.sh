@@ -18,4 +18,7 @@ echo "  populating generic Git configuration"
 git config --global core.excludesfile ~/.gitignore
 # TODO add "simple" pull/push directive
 
+echo "  installing terminal-notifier"
+gem install terminal-notifier
+
 echo "Installation complete!"
