@@ -114,7 +114,6 @@ tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
 
-# TODO handle failure notifications
 alias dockerbuild="caffeinate docker-compose build && tnotify 'Docker build finished!' 'Docker'"
 alias dockerup="caffeinate docker-compose up && tnotify 'Docker failed to start!' 'Docker'"
 # FIXME dockerexec fails, ID inadequate, see issue #8
