@@ -115,7 +115,7 @@ tnotify() {
 }
 
 alias dockerbuild="caffeinate docker-compose build && tnotify 'Docker build finished!' 'Docker'"
-alias dockerup="caffeinate docker-compose up && tnotify 'Docker failed to start!' 'Docker'"
+alias dockerup="caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
 # FIXME dockerexec fails, ID inadequate, see issue #8
 alias dockerexec="docker exec -it $(docker ps -aq | head -n 1) bash -l"
 alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
