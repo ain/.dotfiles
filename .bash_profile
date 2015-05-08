@@ -107,6 +107,7 @@ export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 
 dockerexec() {
   id=`docker ps -aq | head -n 1`
+  echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
   docker exec -it $id bash -l
 }
 
