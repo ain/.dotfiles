@@ -56,10 +56,12 @@ xdiff() {
 claimspace() {
   sudo rm -rf /var/vm/sleepimage ~/.Trash/*
   if hash docker 2>/dev/null; then
+    echo -e "$COL_BLUE Claiming space from Docker... $COL_RESET"
     docker rm $(docker ps -a -q)
     docker rmi $(docker images --filter dangling=true -q)
   fi
   if [[ $1 == "--full" ]]; then
+    echo -e "$COL_BLUE Claiming space from MacPorts... $COL_RESET"
     cleanports
   fi
   df -h
