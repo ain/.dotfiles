@@ -101,6 +101,7 @@ PATH=$PATH:$HOME/.drush
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
+# FIXME IP differences across different machines
 export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
