@@ -12,7 +12,9 @@ My various dotfiles for Mac OS X Yosemite and upwards.
   - `~/.gitignore`
   - `~/.bash_profile`
   - `~/.tmux.conf`
-2. Run `./install.sh`
+  - `~/.composer/composer.json`
+  - `~/.composer/composer.lock`
+2. Run `./install`
 
 ## Tips
 
