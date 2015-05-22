@@ -4,7 +4,7 @@ My various dotfiles for Mac OS X Yosemite and upwards.
 
 ## Dependencies
 
-- [terminal-notifier](https://github.com/alloy/terminal-notifier)
+- [RubyGems](https://rubygems.org/pages/download)
 
 ## Installation
 
