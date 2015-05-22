@@ -1,6 +1,6 @@
 echo "Installing dotfiles..."
 
-PWD=`pwd`
+PWD="~/.dotfiles"
 
 echo "  installing Bash profile"
 unlink ~/.bash_profile
@@ -20,5 +20,12 @@ git config --global core.excludesfile ~/.gitignore
 
 echo "  installing terminal-notifier"
 gem install terminal-notifier
+
+echo " installing Composer descriptors"
+mkdir -p ~/.composer
+unlink ~/.composer/composer.json
+unlink ~/.composer/composer.lock
+ln -s $PWD/.composer/composer.json ~/.composer/composer.json
+ln -s $PWD/.composer/composer.lock ~/.composer/composer.lock
 
 echo "Installation complete!"
