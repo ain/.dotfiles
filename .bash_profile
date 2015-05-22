@@ -95,7 +95,7 @@ alias vpsbackup=vpsbackup
 alias fproc="ps aux | grep $1"
 
 # Composer globals, e.g. Drush
-PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
