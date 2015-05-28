@@ -102,10 +102,14 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
 export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+dockerenv() {
+  export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
+}
+dockerenv
 
 dockerexec() {
+  dockerenv
   id=`docker ps -aq | head -n 1`
   echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
   docker exec -it $id bash -l
@@ -115,11 +119,11 @@ tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
 
-alias dockerbuild="caffeinate docker-compose build && tnotify 'Docker build finished!' 'Docker'"
-alias dockerup="caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
+alias dockerbuild="dockerenv && caffeinate docker-compose build && tnotify 'Docker build finished!' 'Docker'"
+alias dockerup="dockerenv && caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
 alias dockerexec=dockerexec
-alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
-alias dockerps="docker ps -a"
+alias dockerstop="dockerenv && docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
+alias dockerps="dockerenv && docker ps -a"
 
 # NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
