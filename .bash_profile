@@ -115,11 +115,16 @@ dockerexec() {
   docker exec -it $id bash -l
 }
 
+dockerbuild() {
+  dockerenv
+  caffeinate docker-compose build "$@"
+  tnotify 'Docker build finished!' 'Docker'
+}
+
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
 
-alias dockerbuild="dockerenv && caffeinate docker-compose build && tnotify 'Docker build finished!' 'Docker'"
 alias dockerup="dockerenv && caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
 alias dockerexec=dockerexec
 alias dockerstop="dockerenv && docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
