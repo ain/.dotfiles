@@ -126,7 +126,6 @@ tnotify() {
 }
 
 alias dockerup="dockerenv && caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
-alias dockerexec=dockerexec
 alias dockerstop="dockerenv && docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
 alias dockerps="dockerenv && docker ps -a"
 
