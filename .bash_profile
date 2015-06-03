@@ -112,7 +112,7 @@ dockerexec() {
   dockerenv
   id=`docker ps -aq | head -n 1`
   echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
-  docker exec -it $id bash -l
+  docker exec -it $id "$@"
 }
 
 dockerbuild() {
@@ -120,6 +120,8 @@ dockerbuild() {
   caffeinate docker-compose build "$@"
   tnotify 'Docker build finished!' 'Docker'
 }
+l
+
 
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
