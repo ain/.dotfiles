@@ -120,8 +120,6 @@ dockerbuild() {
   caffeinate docker-compose build "$@"
   tnotify 'Docker build finished!' 'Docker'
 }
-l
-
 
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
