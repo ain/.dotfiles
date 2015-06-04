@@ -20,6 +20,7 @@ alias lsusb="system_profiler SPUSBDataType"
 alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
 alias stopload="killall yes"
 alias fproc="ps aux | grep $1"
+alias emptify="cat /dev/null > $1"
 
 # MySQL
 MYSQL_HOME=/opt/local/lib/mysql56
@@ -33,6 +34,11 @@ export PATH=/opt/local/lib/postgresql94/bin:$PATH
 alias postgres_start='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper start';
 alias postgres_stop='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper stop';
 alias postgres_restart='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper restart';
+
+# TODO complete emptying file to 0 length.
+#emptify() {
+  #cat /dev/null > $1
+#}
 
 cpuload() {
   for i in {1..20}; do
