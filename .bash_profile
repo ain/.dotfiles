@@ -18,6 +18,8 @@ alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
 alias lsusb="system_profiler SPUSBDataType"
 alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
+alias stopload="killall yes"
+alias fproc="ps aux | grep $1"
 
 # MySQL
 MYSQL_HOME=/opt/local/lib/mysql56
@@ -84,15 +86,6 @@ vpsbackup() {
   # Start rsync
   caffeinate -i rsync -avz --progress --exclude-from '.vpsbackupignore' $vpspath $mountpath
 }
-
-alias cpuload=cpuload
-alias stopload="killall yes"
-alias dupelines=dupelines
-alias uniquelines=uniquelines
-alias xdiff=xdiff
-alias claimspace=claimspace
-alias vpsbackup=vpsbackup
-alias fproc="ps aux | grep $1"
 
 # Composer globals, e.g. Drush
 export PATH="$HOME/.composer/vendor/bin:$PATH"
