@@ -121,6 +121,7 @@ tnotify() {
 
 alias dockerup="dockerenv && caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
 alias dockerstop="dockerenv && docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
+alias dockerdown=dockerstop
 alias dockerps="dockerenv && docker ps -a"
 alias dockersize="boot2docker ssh df -h"
 
