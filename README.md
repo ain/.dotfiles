@@ -11,7 +11,6 @@ My various dotfiles for Mac OS X Yosemite and upwards.
 1. Make sure the following files are backed up, if applicable:
   - `~/.gitignore`
   - `~/.bash_profile`
-  - `~/.tmux.conf`
   - `~/.composer/composer.json`
   - `~/.composer/composer.lock`
 2. Run `./install`
