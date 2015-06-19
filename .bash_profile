@@ -35,6 +35,10 @@ alias postgres_start='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql9
 alias postgres_stop='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper stop';
 alias postgres_restart='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper restart';
 
+gitpr() {
+  git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1
+}
+
 cpuload() {
   for i in {1..20}; do
     yes > /dev/null &
@@ -97,16 +101,27 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Docker
 export DOCKER_TLS_VERIFY=1
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+
 dockerenv() {
   export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
 }
+
 dockerenv
+
+dockerid() {
+  docker ps -aq | head -n 1
+}
 
 dockerexec() {
   dockerenv
-  id=`docker ps -aq | head -n 1`
   echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
-  docker exec -it $id "$@"
+  docker exec -it `dockerid` "$@"
+}
+
+dockerrun() {
+  dockerenv
+  echo -e "$COL_BLUE Running most recent container $id $COL_RESET"
+  docker run -it `dockerid` "$@"
 }
 
 dockerbuild() {
