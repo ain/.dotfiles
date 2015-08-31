@@ -99,11 +99,8 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
-export DOCKER_TLS_VERIFY=1
-export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-
 dockerenv() {
-  export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
+  eval "$(docker-machine env dev)"
 }
 
 dockerenv
