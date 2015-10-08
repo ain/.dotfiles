@@ -135,7 +135,7 @@ alias dockerup="dockerenv && caffeinate docker-compose up && tnotify 'Docker sto
 alias dockerstop="dockerenv && docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
 alias dockerdown=dockerstop
 alias dockerps="dockerenv && docker ps -a"
-alias dockersize="boot2docker ssh df -h"
+alias dockersize="docker-machine ssh dev 'sudo df -h'"
 
 # NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
