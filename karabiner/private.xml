@@ -21,7 +21,7 @@
       KeyCode::VK_CHANGE_INPUTSOURCE_US,
 
       <!-- wait until input source will be changed -->
-      KeyCode::VK_WAIT_100MS,
+      KeyCode::VK_WAIT_50MS,
 
       <!-- send ` -->
       KeyCode::BACKQUOTE,
