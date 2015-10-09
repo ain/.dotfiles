@@ -5,28 +5,7 @@ echo "Installing dotfiles..."
 # Working directory
 PWD=`pwd`
 
-echo "  installing Bash profile "
-unlink ~/.bash_profile
-ln -s $PWD/.bash_profile ~/.bash_profile
-
-echo "  installing global Git ignore configuration "
-unlink ~/.gitignore
-ln -s $PWD/.gitignore ~/.gitignore
-
-echo "  populating generic Git configuration "
-git config --global core.excludesfile ~/.gitignore
-
-echo "  installing terminal-notifier "
-gem install terminal-notifier
-
-echo "  installing Composer descriptors "
-mkdir -p ~/.composer
-unlink ~/.composer/composer.json
-unlink ~/.composer/composer.lock
-ln -s $PWD/.composer/composer.json ~/.composer/composer.json
-ln -s $PWD/.composer/composer.lock ~/.composer/composer.lock
-
-function remove_configuration {
+function remove_config {
   if [ -h "$1" ]
   then
     unlink "$1"
@@ -36,13 +15,56 @@ function remove_configuration {
   fi
 }
 
+function install_bash_config {
+  echo "  installing Bash profile "
+  local readonly path="$HOME/.bash_profile"
+  remove_config "$path"
+  ln -s "$PWD/.bash_profile" "$path"
+}
+
+function install_git_config {
+  echo "  installing Git configuration "
+  local readonly path="$HOME/.gitignore"
+  remove_config "$path"
+  ln -s "$PWD/.gitignore" "$path"
+  git config --global core.excludesfile "$path"
+}
+
+function install_notifier {
+  echo "  installing terminal-notifier "
+  if [ -z `which terminal-notifier` ]
+  then
+    gem install terminal-notifier
+  fi
+}
+
+function install_compose_config {
+  echo "  installing Composer descriptors "
+
+  local readonly path="$HOME/.composer"
+  local readonly lockpath="$path/composer.lock"
+  local readonly jsonpath="$path/composer.json"
+
+  mkdir -p "$path"
+
+  remove_config "$lockpath"
+  remove_config "$jsonpath"
+
+  ln -s "$PWD/.composer/composer.json" "$jsonpath"
+  ln -s "$PWD/.composer/composer.lock" "$lockpath"
+}
+
 function install_keyboard_bindings {
   echo "  installing keyboard bindings "
   local path="$HOME/Library/Application Support/Karabiner/private.xml"
-  remove_configuration "$path"
+  remove_config "$path"
   ln -s "$PWD/karabiner/private.xml" "$path"
 }
 
+install_bash_config
+install_git_config
+install_compose_config
 install_keyboard_bindings
+install_notifier
 
 echo "Installation finished!"
