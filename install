@@ -26,16 +26,20 @@ unlink ~/.composer/composer.lock
 ln -s $PWD/.composer/composer.json ~/.composer/composer.json
 ln -s $PWD/.composer/composer.lock ~/.composer/composer.lock
 
-install_keyboard_bindings() {
+function remove_configuration {
+  if [ -h "$1" ]
+  then
+    unlink "$1"
+  elif [ -f "$1" ]
+  then
+    rm "$1"
+  fi
+}
+
+function install_keyboard_bindings {
   echo "  installing keyboard bindings "
   local path="$HOME/Library/Application Support/Karabiner/private.xml"
-  if [ -h "$path" ]
-  then
-    unlink "$path"
-  elif [ -f "$path" ]
-  then
-    rm "$path"
-  fi
+  remove_configuration "$path"
   ln -s "$PWD/karabiner/private.xml" "$path"
 }
 
