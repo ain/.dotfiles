@@ -29,12 +29,6 @@ alias mysql_start="sudo $MYSQL_HOME/bin/mysqld_safe --local-infile=1 --user=root
 alias mysql_stop="sudo $MYSQL_HOME/bin/mysqladmin shutdown"
 alias mysqll="mysql --auto-rehash -u root -p"
 
-# PostgreSQL
-export PATH=/opt/local/lib/postgresql94/bin:$PATH
-alias postgres_start='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper start';
-alias postgres_stop='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper stop';
-alias postgres_restart='sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql94-server/postgresql94-server.wrapper restart';
-
 gitpr() {
   git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1
 }
