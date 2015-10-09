@@ -26,11 +26,19 @@ unlink ~/.composer/composer.lock
 ln -s $PWD/.composer/composer.json ~/.composer/composer.json
 ln -s $PWD/.composer/composer.lock ~/.composer/composer.lock
 
-echo "  installing keyboard bindings "
-# TODO: check if Karabiner is installed.
-# TODO: check against file/symlink.
-unlink "$HOME/Library/Application Support/Karabiner/private.xml"
-rm "$HOME/Library/Application Support/Karabiner/private.xml"
-ln -s "$HOME/.dotfiles/karabiner/private.xml" "$HOME/Library/Application Support/Karabiner/private.xml"
+install_keyboard_bindings() {
+  echo "  installing keyboard bindings "
+  local path="$HOME/Library/Application Support/Karabiner/private.xml"
+  if [ -h "$path" ]
+  then
+    unlink "$path"
+  elif [ -f "$path" ]
+  then
+    rm "$path"
+  fi
+  ln -s "$PWD/karabiner/private.xml" "$path"
+}
+
+install_keyboard_bindings
 
 echo "Installation finished!"
