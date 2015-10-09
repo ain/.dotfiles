@@ -13,7 +13,7 @@ COL_MAGENTA=$ESC_SEQ"0;35m"
 COL_CYAN=$ESC_SEQ"0;36m"
 
 # Aliases
-alias ddu="du -h /Users/ain | grep \".*G\t\" >> ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
+alias ddu="du -h /Users/ain | grep \".*G\t\" > ~/Downloads/my-folder-size-report-$(date +%Y%m%d%H%M%S).log"
 alias whereami="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active' | egrep -o -m 1 '^[^\t:]+' | xargs ipconfig getifaddr; curl ipecho.net/plain; echo"
 alias cleanports="sudo port -f uninstall inactive; sudo port clean --all all; df -h"
 alias lsusb="system_profiler SPUSBDataType"
