@@ -53,18 +53,34 @@ xdiff() {
 }
 
 # Claim space over emergency. Kill possible swaps etc.
-# TODO implement levels
+#
+# Options to claim space from:
+#  -d   Docker
+#  -p   MacPorts
+#
 claimspace() {
+
+  echo -e "$COL_BLUE Removing sleep image, emptying trash... $COL_RESET"
   sudo rm -rf /var/vm/sleepimage ~/.Trash/*
-  if hash docker 2>/dev/null; then
-    echo -e "$COL_BLUE Claiming space from Docker... $COL_RESET"
-    docker rm $(docker ps -a -q)
-    docker rmi $(docker images --filter dangling=true -q)
-  fi
-  if [[ $1 == "--full" ]]; then
-    echo -e "$COL_BLUE Claiming space from MacPorts... $COL_RESET"
-    cleanports
-  fi
+
+  while getopts "dp" flag
+  do
+    case "$flag" in
+      d)
+        if hash docker 2>/dev/null; then
+          echo -e "$COL_BLUE Claiming space from Docker... $COL_RESET"
+          docker rm $(docker ps -a -q)
+          docker rmi $(docker images --filter dangling=true -q)
+        else
+          echo -e "$COL_RED Claiming space from Docker failed. Docker N/A. $COL_RESET"
+        fi
+        ;;
+      p)
+        echo -e "$COL_BLUE Claiming space from MacPorts... $COL_RESET"
+        cleanports
+        ;;
+    esac
+  done
   df -h
   echo -e "$COL_GREEN Space claim complete! $COL_RESET"
 }
