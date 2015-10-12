@@ -147,9 +147,6 @@ alias dockerdown=dockerstop
 alias dockerps="dockerenv && docker ps -a"
 alias dockersize="docker-machine ssh dev 'sudo df -h'"
 
-# NVM
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
-nvm use 4.1.2
 
-# RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
