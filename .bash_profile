@@ -109,28 +109,32 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
-#dockerenv() {
-  #eval "$(docker-machine env dev)"
-#}
+dockerenv() {
+  eval "$(docker-machine env $1)"
+}
 
 #dockerenv
 
+# FIXME: consider varying order of containers.
 #dockerid() {
   #docker ps -aq | head -n 1
 #}
 
+# FIXME: consider multiple machines.
 #dockerexec() {
   #dockerenv
   #echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
   #docker exec -it `dockerid` "$@"
 #}
 
+# FIXME: consider multiple machines.
 #dockerrun() {
   #dockerenv
   #echo -e "$COL_BLUE Running most recent container $id $COL_RESET"
   #docker run -it `dockerid` "$@"
 #}
 
+# FIXME: consider multiple machines.
 #dockerbuild() {
   #dockerenv
   #caffeinate docker-compose build "$@"
