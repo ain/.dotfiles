@@ -109,42 +109,42 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
-dockerenv() {
-  eval "$(docker-machine env dev)"
-}
+#dockerenv() {
+  #eval "$(docker-machine env dev)"
+#}
 
-dockerenv
+#dockerenv
 
-dockerid() {
-  docker ps -aq | head -n 1
-}
+#dockerid() {
+  #docker ps -aq | head -n 1
+#}
 
-dockerexec() {
-  dockerenv
-  echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
-  docker exec -it `dockerid` "$@"
-}
+#dockerexec() {
+  #dockerenv
+  #echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
+  #docker exec -it `dockerid` "$@"
+#}
 
-dockerrun() {
-  dockerenv
-  echo -e "$COL_BLUE Running most recent container $id $COL_RESET"
-  docker run -it `dockerid` "$@"
-}
+#dockerrun() {
+  #dockerenv
+  #echo -e "$COL_BLUE Running most recent container $id $COL_RESET"
+  #docker run -it `dockerid` "$@"
+#}
 
-dockerbuild() {
-  dockerenv
-  caffeinate docker-compose build "$@"
-  tnotify 'Docker build finished!' 'Docker'
-}
+#dockerbuild() {
+  #dockerenv
+  #caffeinate docker-compose build "$@"
+  #tnotify 'Docker build finished!' 'Docker'
+#}
 
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
 
-alias dockerup="dockerenv && caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
-alias dockerstop="dockerenv && docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
+alias dockerup="caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
+alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
 alias dockerdown=dockerstop
-alias dockerps="dockerenv && docker ps -a"
+alias dockerps="docker ps -a"
 alias dockersize="docker-machine ssh dev 'sudo df -h'"
 
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
