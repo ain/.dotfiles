@@ -110,36 +110,37 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
 dockerenv() {
-  eval "$(docker-machine env $1)"
+  if [ -z $1 ]; then
+    echo -e "$COL_RED Argument for machine required! $COL_RESET"
+  elif [ -z $2 ]; then
+    echo -e "$COL_RED Argument for main container required! $COL_RESET"
+  else
+    eval "$(docker-machine env $1)"
+    export DOCKER_MAIN_CONTAINER="$2"
+    echo -e "$COL_GREEN Docker environment set for $DOCKER_MACHINE_NAME (main container $DOCKER_MAIN_CONTAINER). $COL_RESET"
+  fi
 }
 
-#dockerenv
+dockerid() {
+  echo -e "$COL_BLUE Retrieving ID for container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
+  docker ps -aq --filter="name=_${DOCKER_MAIN_CONTAINER}_"
+}
 
-# FIXME: consider varying order of containers.
-#dockerid() {
-  #docker ps -aq | head -n 1
-#}
+dockerexec() {
+  echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
+  docker exec -it `dockerid` "$@"
+}
 
-# FIXME: consider multiple machines.
-#dockerexec() {
-  #dockerenv
-  #echo -e "$COL_BLUE Accessing most recent container $id $COL_RESET"
-  #docker exec -it `dockerid` "$@"
-#}
+dockerrun() {
+  echo -e "$COL_BLUE Running container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
+  docker run -it `dockerid` "$@"
+}
 
-# FIXME: consider multiple machines.
-#dockerrun() {
-  #dockerenv
-  #echo -e "$COL_BLUE Running most recent container $id $COL_RESET"
-  #docker run -it `dockerid` "$@"
-#}
-
-# FIXME: consider multiple machines.
-#dockerbuild() {
-  #dockerenv
-  #caffeinate docker-compose build "$@"
-  #tnotify 'Docker build finished!' 'Docker'
-#}
+dockerbuild() {
+  caffeinate docker-compose build "$@"
+  echo -e "$COL_GREEN Docker build finished. $COL_RESET"
+  tnotify 'Docker build finished!' 'Docker'
+}
 
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
