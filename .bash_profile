@@ -122,13 +122,13 @@ dockerenv() {
 }
 
 dockerid() {
-  echo -e "$COL_BLUE Retrieving ID for container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
   docker ps -aq --filter="name=_${DOCKER_MAIN_CONTAINER}_"
 }
 
 dockerexec() {
-  echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
-  docker exec -it `dockerid` "$@"
+  local readonly id=`dockerid`
+  echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER} (${id})... $COL_RESET"
+  docker exec -it $id "$@"
 }
 
 dockerrun() {
