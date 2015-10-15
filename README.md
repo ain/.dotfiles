@@ -1,6 +1,6 @@
 # .dotfiles
 
-My various dotfiles for Mac OS X Yosemite and upwards.
+My various dotfiles for Mac OS X Yosemite or later.
 
 ## Dependencies
 
@@ -22,10 +22,10 @@ My various dotfiles for Mac OS X Yosemite and upwards.
 | __Git__ | |
 | `gitpr <Pull Request ID>` | Check out Pull Request from Github by PR ID |
 | __Docker__ | |
-| `dockerenv` | Detect and set Docker IP for `DOCKER_HOST` env variable |
-| `dockerid` | Display most recent container ID | 
-| `dockerexec <command>` | Execute command in most recent container |
-| `dockerrun <command>` | Run command in most recent container |
+| `dockerenv <machine> <container>` | Set Docker environment variables considering machine and main container |
+| `dockerid` | Display ID of main container | 
+| `dockerexec <command>` | Execute command in main container |
+| `dockerrun <command>` | Run command in main container |
 | `dockerbuild` | Alias of `docker-compose build` |
 | `dockerup` | Alias of `docker-compose up` |
 | `dockerdown` | Alias of `docker-compose down` |
