@@ -26,6 +26,6 @@ My various dotfiles for Mac OS X Yosemite or later.
 | `dockerid` | Display ID of main container | 
 | `dockerexec <command>` | Execute command in main container |
 | `dockerrun <command>` | Run command in main container |
-| `dockerbuild` | Alias of `docker-compose build` |
+| `dockerbuild <options>` | Alias of `docker-compose build`. Supports `--no-cache` option. |
 | `dockerup` | Alias of `docker-compose up` |
 | `dockerdown` | Alias of `docker-compose down` |
