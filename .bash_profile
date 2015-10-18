@@ -69,7 +69,7 @@ claimspace() {
       d)
         if hash docker 2>/dev/null; then
           echo -e "$COL_BLUE Claiming space from Docker... $COL_RESET"
-          docker rm $(docker ps -a -q)
+          docker rm -v $(docker ps -a -q)
           docker rmi $(docker images --filter dangling=true -q)
         else
           echo -e "$COL_RED Claiming space from Docker failed. Docker N/A. $COL_RESET"
