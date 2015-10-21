@@ -69,8 +69,8 @@ claimspace() {
       d)
         if hash docker 2>/dev/null; then
           echo -e "$COL_BLUE Claiming space from Docker... $COL_RESET"
-          docker rm -v $(docker ps -a -q)
-          docker rmi $(docker images --filter dangling=true -q)
+          dockerwipe
+
         else
           echo -e "$COL_RED Claiming space from Docker failed. Docker N/A. $COL_RESET"
         fi
@@ -122,7 +122,7 @@ dockerenv() {
 }
 
 dockerid() {
-  docker ps -aq --filter="name=_${DOCKER_MAIN_CONTAINER}_"
+  docker ps -aq --filter="name=_${DOCKER_MAIN_CONTAINER}_" | head -n 1
 }
 
 dockerexec() {
@@ -140,6 +140,20 @@ dockerbuild() {
   caffeinate docker-compose build "$@"
   echo -e "$COL_GREEN Docker build finished. $COL_RESET"
   tnotify 'Docker build finished!' 'Docker'
+}
+
+dockerwipe() {
+  local readonly containers=`docker ps -aq`
+  local readonly container_count=`$containers | wc -l`
+  echo -e "$COL_BLUE Removing Docker containers ($container_count)... $COL_RESET"
+  docker rm -v $containers
+
+  local readonly images=`docker images --filter dangling=true -q`
+  local readonly image_count=`echo $images | wc -l`
+  echo -e "$COL_BLUE Removing dangling Docker images ($image_count)... $COL_RESET"
+  docker rmi $images
+
+  echo -e "$COL_GREEN Docker wipe finished. $COL_RESET"
 }
 
 tnotify() {
