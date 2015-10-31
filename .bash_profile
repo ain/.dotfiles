@@ -22,13 +22,6 @@ alias stopload="killall yes"
 alias fproc="ps aux | grep $1"
 alias emptify="cat /dev/null > $1"
 
-# TODO: remove MySQL entries in favour of Docker infrastructure.
-MYSQL_HOME=/opt/local/lib/mysql56
-export PATH=$MYSQL_HOME/bin:$PATH
-alias mysql_start="sudo $MYSQL_HOME/bin/mysqld_safe --local-infile=1 --user=root &"
-alias mysql_stop="sudo $MYSQL_HOME/bin/mysqladmin shutdown"
-alias mysqll="mysql --auto-rehash -u root -p"
-
 gitpr() {
   git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1
 }
