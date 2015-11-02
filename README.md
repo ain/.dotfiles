@@ -22,7 +22,7 @@ My various dotfiles for Mac OS X Yosemite or later.
 | __Git__ | |
 | `gitpr <Pull Request ID>` | Check out Pull Request from Github by PR ID |
 | __Docker__ | |
-| `dockerenv [machine] [container]` | Set Docker environment variables if machine and main container given, otherwise attempt to display already set environment variables |
+| `dockerenv [machine] [container]` | Set Docker environment variables or get already set ones |
 | `dockerid` | Display ID of main container | 
 | `dockerexec <command>` | Execute command in main container |
 | `dockerrun <command>` | Run command in main container |
