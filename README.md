@@ -24,7 +24,7 @@ My various dotfiles for Mac OS X Yosemite or later.
 | __Docker__ | |
 | `dockerenv [machine] [container]` | Set Docker environment variables or get already set ones |
 | `dockerid` | Display ID of main container | 
-| `dockerexec <command>` | Execute command in main container |
+| `dockerexec [command]` | Execute command in main container. Defaults to `bash -l`. |
 | `dockerrun <command>` | Run command in main container |
 | `dockerbuild <options>` | Alias of `docker-compose build`. Supports `--no-cache` option. |
 | `dockerup` | Alias of `docker-compose up` |

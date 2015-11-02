@@ -125,7 +125,11 @@ dockerid() {
 dockerexec() {
   local readonly id=`dockerid`
   echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER} (${id})... $COL_RESET"
-  docker exec -it $id "$@"
+  if [ $# -eq 0 ]; then
+    docker exec -it $id bash -l
+  else
+    docker exec -it $id "$@"
+  fi
 }
 
 dockerrun() {
