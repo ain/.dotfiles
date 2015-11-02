@@ -104,7 +104,11 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Docker
 dockerenv() {
   if [ -z $1 ]; then
-    echo -e "$COL_RED Argument for machine required! $COL_RESET"
+    if [ -z $DOCKER_MACHINE_NAME ]; then
+      echo -e "$COL_RED Argument for machine required! $COL_RESET"
+    else
+      docker-machine env $DOCKER_MACHINE_NAME
+    fi
   elif [ -z $2 ]; then
     echo -e "$COL_RED Argument for main container required! $COL_RESET"
   else
