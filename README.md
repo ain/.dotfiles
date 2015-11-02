@@ -29,3 +29,4 @@ My various dotfiles for Mac OS X Yosemite or later.
 | `dockerbuild <options>` | Alias of `docker-compose build`. Supports `--no-cache` option. |
 | `dockerup` | Alias of `docker-compose up` |
 | `dockerdown` | Alias of `docker-compose down` |
+| `dockerbounce` | Alias of `docker-compose restart` |
