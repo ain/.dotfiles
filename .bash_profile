@@ -158,6 +158,7 @@ alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
 alias dockerdown=dockerstop
 alias dockerps="docker ps -a"
 alias dockersize="docker-machine ssh dev 'sudo df -h'"
+alias dockerbounce="docker-compose restart"
 
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
 
