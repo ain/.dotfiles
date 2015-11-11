@@ -119,6 +119,7 @@ dockerenv() {
 }
 
 dockerid() {
+  local OPTIND
   local readonly namefilter="name=_${DOCKER_MAIN_CONTAINER}_"
   if [ $# -eq 0 ]; then
     docker ps -aq --filter=$namefilter | head -n 1
@@ -127,7 +128,7 @@ dockerid() {
     do
       case "$flag" in
         r)
-          docker ps -aq --filter=$namefilter --filter="status=running" | head -n 1
+          docker ps -aq --filter=$namefilter --filter="status=running" | head -n 1;;
       esac
     done
   fi
