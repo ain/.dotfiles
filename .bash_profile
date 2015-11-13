@@ -169,6 +169,10 @@ dockerwipe() {
   echo -e "$COL_GREEN Docker wipe finished. $COL_RESET"
 }
 
+dockersize() {
+  docker-machine ssh $DOCKER_MACHINE_NAME 'sudo df -h'
+}
+
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
@@ -177,7 +181,6 @@ alias dockerup="caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docke
 alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
 alias dockerdown=dockerstop
 alias dockerps="docker ps -a"
-alias dockersize="docker-machine ssh dev 'sudo df -h'"
 alias dockerbounce="docker-compose restart"
 
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
