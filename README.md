@@ -30,3 +30,4 @@ My various dotfiles for Mac OS X Yosemite or later.
 | `dockerup` | Alias of `docker-compose up` |
 | `dockerdown` | Alias of `docker-compose down` |
 | `dockerbounce` | Alias of `docker-compose restart` |
+| `dockersize` | Display status of disk space on Docker file systems |
