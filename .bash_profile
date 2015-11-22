@@ -119,11 +119,23 @@ dockerenv() {
 }
 
 dockerid() {
-  docker ps -aq --filter="name=_${DOCKER_MAIN_CONTAINER}_" | head -n 1
+  local OPTIND
+  local readonly namefilter="name=_${DOCKER_MAIN_CONTAINER}_"
+  if [ $# -eq 0 ]; then
+    docker ps -aq --filter=$namefilter | head -n 1
+  else
+    while getopts "r" flag
+    do
+      case "$flag" in
+        r)
+          docker ps -aq --filter=$namefilter --filter="status=running" | head -n 1;;
+      esac
+    done
+  fi
 }
 
 dockerexec() {
-  local readonly id=`dockerid`
+  local readonly id=`dockerid -r`
   echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER} (${id})... $COL_RESET"
   if [ $# -eq 0 ]; then
     docker exec -it $id bash -l
