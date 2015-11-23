@@ -31,3 +31,4 @@ My various dotfiles for Mac OS X Yosemite or later.
 | `dockerdown` | Alias of `docker-compose down` |
 | `dockerbounce` | Alias of `docker-compose restart` |
 | `dockersize` | Display status of disk space on Docker file systems |
+| `dockerwipe` | Remove all containers and dangling images |
