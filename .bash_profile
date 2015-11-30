@@ -188,6 +188,9 @@ alias dockerdown=dockerstop
 alias dockerps="docker ps -a"
 alias dockerbounce="docker-compose restart"
 
+# FIXME: Autocomplete for Docker
+#. ~/.dotfiles/.docker-completion.sh
+
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
