@@ -19,6 +19,8 @@ My various dotfiles for Mac OS X Yosemite or later.
 
 | Command | Description |
 |---------|-----|
+| __tmux__ | |
+| `demux` | Kill all tmux sessions at once | 
 | __Git__ | |
 | `gitpr <Pull Request ID>` | Check out Pull Request from Github by PR ID |
 | __Docker__ | |

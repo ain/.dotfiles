@@ -22,8 +22,16 @@ alias stopload="killall yes"
 alias fproc="ps aux | grep $1"
 alias emptify="cat /dev/null > $1"
 
+# Kill all tmux sessions
+demux() {
+  for sess in $(tmux ls | awk '{FS=":" ; print $1}' | sed 's/://g') ; do
+    echo -e "$COL_RED Killing session $sess $COL_RESET"
+    tmux kill-session -t $sess
+  done
+}
+
 gitpr() {
-  git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1
+  git ftch origin pull/$1/head:pr/$1 && git checkout pr/$1
 }
 
 cpuload() {
