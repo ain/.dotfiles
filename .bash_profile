@@ -22,14 +22,6 @@ alias stopload="killall yes"
 alias fproc="ps aux | grep $1"
 alias emptify="cat /dev/null > $1"
 
-# Kill all tmux sessions
-demux() {
-  for sess in $(tmux ls | awk '{FS=":" ; print $1}' | sed 's/://g') ; do
-    echo -e "$COL_RED Killing session $sess $COL_RESET"
-    tmux kill-session -t $sess
-  done
-}
-
 gitpr() {
   git ftch origin pull/$1/head:pr/$1 && git checkout pr/$1
 }
@@ -189,12 +181,6 @@ dockersize() {
 tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
-
-alias dockerup="caffeinate docker-compose up && tnotify 'Docker stopped!' 'Docker'"
-alias dockerstop="docker-compose stop && tnotify 'Docker stopped!' 'Docker'"
-alias dockerdown=dockerstop
-alias dockerps="docker ps -a"
-alias dockerbounce="docker-compose restart"
 
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
 

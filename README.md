@@ -19,8 +19,6 @@ My various dotfiles for Mac OS X Yosemite or later.
 
 | Command | Description |
 |---------|-----|
-| __tmux__ | |
-| `demux` | Kill all tmux sessions at once | 
 | __Git__ | |
 | `gitpr <Pull Request ID>` | Check out Pull Request from Github by PR ID |
 | __Docker__ | |
@@ -29,8 +27,5 @@ My various dotfiles for Mac OS X Yosemite or later.
 | `dockerexec [command]` | Execute command in main container. Defaults to `bash -l`. |
 | `dockerrun <command>` | Run command in main container |
 | `dockerbuild <options>` | Alias of `docker-compose build`. Supports `--no-cache` option. |
-| `dockerup` | Alias of `docker-compose up` |
-| `dockerdown` | Alias of `docker-compose down` |
-| `dockerbounce` | Alias of `docker-compose restart` |
 | `dockersize` | Display status of disk space on Docker file systems |
 | `dockerwipe` | Remove all containers and dangling images |
