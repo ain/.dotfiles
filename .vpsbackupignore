@@ -1,5 +1,0 @@
-logs/default-*.log
-.git/
-.gitignore
-.DS_Store
-errors.log.php
