@@ -56,7 +56,7 @@ function install_compose_config {
 
 function install_keyboard_bindings {
   echo "  installing keyboard bindings "
-  local path="$HOME/Library/Application Support/Karabiner/private.xml"
+  local readonly path="$HOME/Library/Application Support/Karabiner/private.xml"
   remove_config "$path"
   ln -s "$PWD/karabiner/private.xml" "$path"
 }
