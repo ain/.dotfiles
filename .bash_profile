@@ -90,46 +90,32 @@ dockerenv() {
     if [ -z $DOCKER_MACHINE_NAME ]; then
       echo -e "$COL_RED Argument for machine required! $COL_RESET"
     else
+      if [ ! -z $DOCKER_MAIN_CONTAINER ]; then
+        echo "export DOCKER_MAIN_CONTAINER=\"$DOCKER_MAIN_CONTAINER\""
+      fi
       docker-machine env $DOCKER_MACHINE_NAME
     fi
-  elif [ -z $2 ]; then
-    echo -e "$COL_RED Argument for main container required! $COL_RESET"
   else
+    if [ ! -z $2 ]; then
+      export DOCKER_MAIN_CONTAINER="$2"
+    fi
     eval "$(docker-machine env $1)"
-    export DOCKER_MAIN_CONTAINER="$2"
     echo -e "$COL_GREEN Docker environment set for $DOCKER_MACHINE_NAME (main container $DOCKER_MAIN_CONTAINER). $COL_RESET"
   fi
 }
 
-dockerid() {
-  local OPTIND
-  local readonly namefilter="name=_${DOCKER_MAIN_CONTAINER}_"
-  if [ $# -eq 0 ]; then
-    docker ps -aq --filter=$namefilter | head -n 1
-  else
-    while getopts "r" flag
-    do
-      case "$flag" in
-        r)
-          docker ps -aq --filter=$namefilter --filter="status=running" | head -n 1;;
-      esac
-    done
-  fi
-}
-
 dockerexec() {
-  local readonly id=`dockerid -r`
-  echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER} (${id})... $COL_RESET"
+  echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
   if [ $# -eq 0 ]; then
-    docker exec -it $id bash -l
+    docker exec -it $DOCKER_MAIN_CONTAINER bash -l
   else
-    docker exec -it $id "$@"
+    docker exec -it $DOCKER_MAIN_CONTAINER "$@"
   fi
 }
 
 dockerrun() {
   echo -e "$COL_BLUE Running container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
-  docker run -it `dockerid` "$@"
+  docker run -it $DOCKER_MAIN_CONTAINER "$@"
 }
 
 dockerbuild() {
