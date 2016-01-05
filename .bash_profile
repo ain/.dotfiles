@@ -105,6 +105,7 @@ dockerenv() {
 }
 
 dockerexec() {
+  # FIXME: throw up if DOCKER_MAIN_CONTAINER is missing.
   echo -e "$COL_BLUE Accessing container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
   if [ $# -eq 0 ]; then
     docker exec -it $DOCKER_MAIN_CONTAINER bash -l
