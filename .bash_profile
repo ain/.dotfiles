@@ -152,6 +152,22 @@ tnotify() {
   terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
 }
 
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+  . /opt/local/etc/profile.d/bash_completion.sh
+fi
+# Docker autocomplete
+if [ -f /opt/local/etc/profile.d/docker-completion.sh ]; then
+  . /opt/local/etc/profile.d/docker-completion.sh
+fi
+# Docker Compose autocomplete
+if [ -f /opt/local/etc/profile.d/docker-compose-completion.sh ]; then
+  . /opt/local/etc/profile.d/docker-compose-completion.sh
+fi
+# Docker Machine autocomplete
+if [ -f /opt/local/etc/profile.d/docker-machine-completion.sh ]; then
+  . /opt/local/etc/profile.d/docker-machine-completion.sh
+fi
+
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
