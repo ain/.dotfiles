@@ -21,6 +21,7 @@ alias cleancwd="rm -rf * .[0-9a-zA-Z]*"
 alias stopload="killall yes"
 alias fproc="ps aux | grep $1"
 alias emptify="cat /dev/null > $1"
+alias killcache="sudo killall -HUP mDNSResponder"
 
 gitpr() {
   git ftch origin pull/$1/head:pr/$1 && git checkout pr/$1

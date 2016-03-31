@@ -19,6 +19,8 @@ My various dotfiles for Mac OS X Yosemite or later.
 
 | Command | Description |
 |---------|-----|
+| __Aliases__ | |
+| `killcache` | Kill DNS cache | 
 | __Git__ | |
 | `gitpr <Pull Request ID>` | Check out Pull Request from Github by PR ID |
 | __Docker__ | |
