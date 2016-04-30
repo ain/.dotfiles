@@ -87,17 +87,11 @@ dockerenv() {
     if [ -z $DOCKER_MACHINE_NAME ]; then
       echo -e "$COL_RED Argument for machine required! $COL_RESET"
     else
-      if [ ! -z $DOCKER_MAIN_CONTAINER ]; then
-        echo "export DOCKER_MAIN_CONTAINER=\"$DOCKER_MAIN_CONTAINER\""
-      fi
       docker-machine env $DOCKER_MACHINE_NAME
     fi
   else
-    if [ ! -z $2 ]; then
-      export DOCKER_MAIN_CONTAINER="$2"
-    fi
     eval "$(docker-machine env $1)"
-    echo -e "$COL_GREEN Docker environment set for $DOCKER_MACHINE_NAME (main container $DOCKER_MAIN_CONTAINER). $COL_RESET"
+    echo -e "$COL_GREEN Docker environment set for $DOCKER_MACHINE_NAME $COL_RESET"
   fi
 }
 

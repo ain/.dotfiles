@@ -22,6 +22,6 @@ My various dotfiles for Mac OS X Yosemite or later.
 | __Aliases__ | |
 | `killcache` | Kill DNS cache | 
 | __Docker__ | |
-| `dockerenv <machine> <container>` | Set Docker environment variables or get already set ones |
+| `dockerenv <machine>` | Set Docker environment variables or get already set ones |
 | `dockersize` | Display status of disk space on Docker file systems |
 | `dockerwipe` | Remove all containers and dangling images |
