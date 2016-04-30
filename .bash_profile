@@ -23,10 +23,6 @@ alias fproc="ps aux | grep $1"
 alias emptify="cat /dev/null > $1"
 alias killcache="sudo killall -HUP mDNSResponder"
 
-gitpr() {
-  git ftch origin pull/$1/head:pr/$1 && git checkout pr/$1
-}
-
 cpuload() {
   for i in {1..20}; do
     yes > /dev/null &

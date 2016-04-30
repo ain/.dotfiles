@@ -21,8 +21,6 @@ My various dotfiles for Mac OS X Yosemite or later.
 |---------|-----|
 | __Aliases__ | |
 | `killcache` | Kill DNS cache | 
-| __Git__ | |
-| `gitpr <Pull Request ID>` | Check out Pull Request from Github by PR ID |
 | __Docker__ | |
 | `dockerenv <machine> <container>` | Set Docker environment variables or get already set ones |
 | `dockerexec <command>` | Execute command in main container. Defaults to `bash -l`. |
