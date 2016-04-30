@@ -111,11 +111,6 @@ dockerexec() {
   fi
 }
 
-dockerrun() {
-  echo -e "$COL_BLUE Running container ${DOCKER_MAIN_CONTAINER}... $COL_RESET"
-  docker run -it $DOCKER_MAIN_CONTAINER "$@"
-}
-
 dockerwipe() {
   # TODO: DRY up.
   local readonly containers=`docker ps -aq`
