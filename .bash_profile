@@ -116,12 +116,6 @@ dockerrun() {
   docker run -it $DOCKER_MAIN_CONTAINER "$@"
 }
 
-dockerbuild() {
-  caffeinate docker-compose build "$@"
-  echo -e "$COL_GREEN Docker build finished. $COL_RESET"
-  tnotify 'Docker build finished!' 'Docker'
-}
-
 dockerwipe() {
   # TODO: DRY up.
   local readonly containers=`docker ps -aq`
