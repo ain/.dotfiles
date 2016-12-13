@@ -96,16 +96,24 @@ dockerenv() {
 }
 
 dockerwipe() {
-  local readonly containers=`docker ps -aq`
-  local readonly container_count=`echo "$containers" | wc -l | sed 's/[[:space:]]//g'`
-  if [ -n "$containers" ]; then
-    echo -e "$COL_BLUE Removing Docker containers ($container_count)... $COL_RESET"
-    docker rm -fv $containers
-  fi
+
+  while getopts "f" flag
+  do
+    case "$flag" in
+      f)
+        local readonly containers=`docker ps -aq`
+        local readonly container_count=`echo "$containers" | wc -l | sed 's/[[:space:]]//g'`
+        if [ -n "$containers" ]; then
+          echo -e "$COL_BLUE Removing Docker containers ($container_count) by force... $COL_RESET"
+          docker rm -fv $containers
+        fi
+        ;;
+    esac
+  done
 
   local readonly volumes=`docker volume ls -qf dangling=true`
   local readonly volume_count=`echo "$volumes" | wc -l | sed 's/[[:space:]]//g'`
-  if [ -n "$containers" ]; then
+  if [ -n "$volumes" ]; then
     echo -e "$COL_BLUE Removing dangling Docker volumes ($volume_count)... $COL_RESET"
     docker volume rm $volumes
   fi
@@ -117,7 +125,7 @@ dockerwipe() {
     docker rmi $images
   fi
 
-  echo -e "$COL_GREEN Docker wipe finished. Removed $container_count container(s), $volume_count volume(s), $image_count image(s). $COL_RESET"
+  echo -e "$COL_GREEN Docker wipe finished.$COL_RESET"
 }
 
 dockersize() {
