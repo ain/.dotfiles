@@ -103,6 +103,13 @@ dockerwipe() {
     docker rm -fv $containers
   fi
 
+  local readonly volumes=`docker volume ls -qf dangling=true`
+  local readonly volume_count=`echo "$volumes" | wc -l | sed 's/[[:space:]]//g'`
+  if [ -n "$containers" ]; then
+    echo -e "$COL_BLUE Removing dangling Docker volumes ($volume_count)... $COL_RESET"
+    docker volume rm $volumes
+  fi
+
   local readonly images=`docker images --filter dangling=true -q`
   local readonly image_count=`echo "$images" | wc -l | sed 's/[[:space:]]//g'`
   if [ -n "$images" ]; then
@@ -110,7 +117,7 @@ dockerwipe() {
     docker rmi $images
   fi
 
-  echo -e "$COL_GREEN Docker wipe finished. Removed $container_count container(s), $image_count image(s). $COL_RESET"
+  echo -e "$COL_GREEN Docker wipe finished. Removed $container_count container(s), $volume_count volume(s), $image_count image(s). $COL_RESET"
 }
 
 dockersize() {
