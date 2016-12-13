@@ -96,16 +96,15 @@ dockerenv() {
 }
 
 dockerwipe() {
-  # TODO: DRY up.
   local readonly containers=`docker ps -aq`
-  local readonly container_count=`docker ps -aq | wc -l | sed 's/[[:space:]]//g'`
+  local readonly container_count=`echo "$containers" | wc -l | sed 's/[[:space:]]//g'`
   if [ -n "$containers" ]; then
     echo -e "$COL_BLUE Removing Docker containers ($container_count)... $COL_RESET"
-    docker rm -v $containers
+    docker rm -fv $containers
   fi
 
   local readonly images=`docker images --filter dangling=true -q`
-  local readonly image_count=`docker images --filter dangling=true -q | wc -l | sed 's/[[:space:]]//g'`
+  local readonly image_count=`echo "$images" | wc -l | sed 's/[[:space:]]//g'`
   if [ -n "$images" ]; then
     echo -e "$COL_BLUE Removing dangling Docker images ($image_count)... $COL_RESET"
     docker rmi $images
@@ -137,6 +136,9 @@ fi
 if [ -f /opt/local/etc/profile.d/docker-machine-completion.sh ]; then
   . /opt/local/etc/profile.d/docker-machine-completion.sh
 fi
+
+# Fix tmux problem on macOS Sierra
+export EVENT_NOKQUEUE=1
 
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
 
