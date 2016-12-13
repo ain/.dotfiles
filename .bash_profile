@@ -118,7 +118,7 @@ dockerwipe() {
     docker volume rm $volumes
   fi
 
-  local readonly images=`docker images --filter dangling=true -q`
+  local readonly images=`docker images -qf dangling=true`
   local readonly image_count=`echo "$images" | wc -l | sed 's/[[:space:]]//g'`
   if [ -n "$images" ]; then
     echo -e "$COL_BLUE Removing dangling Docker images ($image_count)... $COL_RESET"
