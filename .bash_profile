@@ -82,6 +82,9 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Docker
+
+alias dockerup="docker-compose up -d && docker-compose logs -f"
+
 dockerenv() {
   if [ -z $1 ]; then
     if [ -z $DOCKER_MACHINE_NAME ]; then
@@ -156,5 +159,6 @@ fi
 export EVENT_NOKQUEUE=1
 
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
+nvm use default
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
