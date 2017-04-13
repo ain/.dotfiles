@@ -1,6 +1,6 @@
 # .dotfiles
 
-My various dotfiles for Mac OS X Yosemite or later.
+My various dotfiles for macOS.
 
 ## Dependencies
 
