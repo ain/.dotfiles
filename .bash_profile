@@ -168,6 +168,12 @@ else
   eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 fi
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ain/google-cloud-sdk/path.bash.inc' ]; then source '/Users/ain/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ain/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/ain/google-cloud-sdk/completion.bash.inc'; fi
+
 [[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
 nvm use default
 
