@@ -1,10 +1,13 @@
 # .dotfiles
 
-My various dotfiles for Mac OS X Yosemite or later.
+My various dotfiles for macOS.
 
 ## Dependencies
 
 - [RubyGems](https://rubygems.org/pages/download)
+- gpg and gpg-agent, e.g. for verified commits in Vim. Install with:
+
+        $ sudo port install gpg gpg-agent
 
 ## Installation
 

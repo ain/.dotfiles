@@ -54,17 +54,9 @@ function install_compose_config {
   ln -s "$PWD/.composer/composer.lock" "$lockpath"
 }
 
-function install_keyboard_bindings {
-  echo "  installing keyboard bindings "
-  local readonly path="$HOME/Library/Application Support/Karabiner/private.xml"
-  remove_config "$path"
-  ln -s "$PWD/karabiner/private.xml" "$path"
-}
-
 install_bash_config
 install_git_config
 install_compose_config
-install_keyboard_bindings
 install_notifier
 
 echo "Installation finished!"
