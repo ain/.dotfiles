@@ -158,15 +158,16 @@ fi
 # Fix tmux problem on macOS Sierra
 export EVENT_NOKQUEUE=1
 
-# GnuGP
-if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
-  source ~/.gnupg/.gpg-agent-info
-  export GPG_AGENT_INFO
-  GPG_TTY=$(tty)
-  export GPG_TTY
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
+# GnuGPG
+# TODO: evaluate removal since correct GPG Suite installation covers gpg-agent startup.
+#if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
+  #source ~/.gnupg/.gpg-agent-info
+  #export GPG_AGENT_INFO
+  #GPG_TTY=$(tty)
+  #export GPG_TTY
+#else
+  #eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+#fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ain/google-cloud-sdk/path.bash.inc' ]; then source '/Users/ain/google-cloud-sdk/path.bash.inc'; fi
