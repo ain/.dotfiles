@@ -85,19 +85,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 alias dockerup="docker-compose up -d && docker-compose logs -f"
 
-dockerenv() {
-  if [ -z $1 ]; then
-    if [ -z $DOCKER_MACHINE_NAME ]; then
-      echo -e "$COL_RED Argument for machine required! $COL_RESET"
-    else
-      docker-machine env $DOCKER_MACHINE_NAME
-    fi
-  else
-    eval "$(docker-machine env $1)"
-    echo -e "$COL_GREEN Docker environment set for $DOCKER_MACHINE_NAME $COL_RESET"
-  fi
-}
-
 dockerwipe() {
 
   while getopts "f" flag
@@ -129,10 +116,6 @@ dockerwipe() {
   fi
 
   echo -e "$COL_GREEN Docker wipe finished.$COL_RESET"
-}
-
-dockersize() {
-  docker-machine ssh $DOCKER_MACHINE_NAME 'sudo df -h'
 }
 
 tnotify() {
