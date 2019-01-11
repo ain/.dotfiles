@@ -131,14 +131,6 @@ dockerwipe() {
   echo -e "$COL_GREEN Docker wipe finished.$COL_RESET"
 }
 
-dockersize() {
-  docker-machine ssh $DOCKER_MACHINE_NAME 'sudo df -h'
-}
-
-tnotify() {
-  terminal-notifier -message "$1" -title "$2" -activate com.apple.Terminal
-}
-
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
 fi
@@ -150,30 +142,15 @@ fi
 if [ -f /opt/local/etc/profile.d/docker-compose-completion.sh ]; then
   . /opt/local/etc/profile.d/docker-compose-completion.sh
 fi
-# Docker Machine autocomplete
-if [ -f /opt/local/etc/profile.d/docker-machine-completion.sh ]; then
-  . /opt/local/etc/profile.d/docker-machine-completion.sh
-fi
 
 # Fix tmux problem on macOS Sierra
 export EVENT_NOKQUEUE=1
 
-# GnuGPG
-# TODO: evaluate removal since correct GPG Suite installation covers gpg-agent startup.
-#if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
-  #source ~/.gnupg/.gpg-agent-info
-  #export GPG_AGENT_INFO
-  #GPG_TTY=$(tty)
-  #export GPG_TTY
-#else
-  #eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-#fi
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ain/google-cloud-sdk/path.bash.inc' ]; then source '/Users/ain/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/usr/local/lib/google-cloud-sdk/path.bash.inc' ]; then source '/usr/local/lib/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/ain/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/ain/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/usr/local/lib/google-cloud-sdk/completion.bash.inc' ]; then source '/usr/local/lib/google-cloud-sdk/completion.bash.inc'; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
