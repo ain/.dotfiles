@@ -19,9 +19,6 @@ My various dotfiles for macOS.
 
 | Command               | Description                                                                                    |
 | ---------             | -----                                                                                          |
-| __Functions__         |                                                                                                |
-| `claimspace`          | Claim all space that can be freed on disk.<br><br>`-d` include Docker<br>`-p` include MacPorts |
-| __Aliases__           |                                                                                                |
-| `killcache`           | Kill DNS cache                                                                                 |  
-| __Docker__            |                                                                                                |
+| `claimspace <option>` | Claim all space that can be freed on disk.<br><br>`-d` include Docker<br>`-p` include MacPorts |
 | `dockerwipe <option>` | Remove dangling volumes and images. Options:<br><br>`-f` force-remove containers               |
+| `killcache`           | Kill DNS cache                                                                                 |  
