@@ -51,7 +51,7 @@ xdiff() {
 claimspace() {
 
   echo -e "$COL_BLUE Removing sleep image, emptying trash... $COL_RESET"
-  sudo rm -rf /var/vm/sleepimage ~/.Trash/*
+  sudo rm -rf ~/.Trash/*
 
   while getopts "dp" flag
   do
