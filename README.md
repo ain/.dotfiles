@@ -17,9 +17,11 @@ My various dotfiles for macOS.
 
 ## Special commands
 
-| Command               | Description                                                                      |
-| ---------             | -----                                                                            |
-| __Aliases__           |                                                                                  |
-| `killcache`           | Kill DNS cache                                                                   |  
-| __Docker__            |                                                                                  |
-| `dockerwipe <option>` | Remove dangling volumes and images. Options:<br><br>`-f` force-remove containers |
+| Command               | Description                                                                                    |
+| ---------             | -----                                                                                          |
+| __Functions__         |                                                                                                |
+| `claimspace`          | Claim all space that can be freed on disk.<br><br>`-d` include Docker<br>`-p` include MacPorts |
+| __Aliases__           |                                                                                                |
+| `killcache`           | Kill DNS cache                                                                                 |  
+| __Docker__            |                                                                                                |
+| `dockerwipe <option>` | Remove dangling volumes and images. Options:<br><br>`-f` force-remove containers               |
