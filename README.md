@@ -2,10 +2,6 @@
 
 My various dotfiles for macOS.
 
-## Dependencies
-
-- [RubyGems](https://rubygems.org/pages/download)
-
 ## Installation
 
 1. Make sure the following files are backed up, if applicable:
