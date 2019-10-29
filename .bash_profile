@@ -22,6 +22,7 @@ alias stopload="killall yes"
 alias fproc="ps aux | grep $1"
 alias emptify="cat /dev/null > $1"
 alias killcache="sudo killall -HUP mDNSResponder"
+alias dockerwipe="docker system prune -a --volumes"
 
 cpuload() {
   for i in {1..20}; do
@@ -59,7 +60,7 @@ claimspace() {
       d)
         if hash docker 2>/dev/null; then
           echo -e "$COL_BLUE Claiming space from Docker... $COL_RESET"
-          dockerwipe
+          docker system prune -a --volumes
 
         else
           echo -e "$COL_RED Claiming space from Docker failed. Docker N/A. $COL_RESET"
@@ -84,39 +85,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Docker
 
 alias dockerup="docker-compose up -d && docker-compose logs -f"
-
-dockerwipe() {
-
-  while getopts "f" flag
-  do
-    case "$flag" in
-      f)
-        local readonly containers=`docker ps -aq`
-        local readonly container_count=`echo "$containers" | wc -l | sed 's/[[:space:]]//g'`
-        if [ -n "$containers" ]; then
-          echo -e "$COL_BLUE Removing Docker containers ($container_count) by force... $COL_RESET"
-          docker rm -fv $containers
-        fi
-        ;;
-    esac
-  done
-
-  local readonly volumes=`docker volume ls -qf dangling=true`
-  local readonly volume_count=`echo "$volumes" | wc -l | sed 's/[[:space:]]//g'`
-  if [ -n "$volumes" ]; then
-    echo -e "$COL_BLUE Removing dangling Docker volumes ($volume_count)... $COL_RESET"
-    docker volume rm $volumes
-  fi
-
-  local readonly images=`docker images -qf dangling=true`
-  local readonly image_count=`echo "$images" | wc -l | sed 's/[[:space:]]//g'`
-  if [ -n "$images" ]; then
-    echo -e "$COL_BLUE Removing dangling Docker images ($image_count)... $COL_RESET"
-    docker rmi $images
-  fi
-
-  echo -e "$COL_GREEN Docker wipe finished.$COL_RESET"
-}
 
 # Fix tmux problem on macOS Sierra
 export EVENT_NOKQUEUE=1
