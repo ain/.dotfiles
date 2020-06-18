@@ -82,10 +82,6 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 # MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
-# Docker
-
-alias dockerup="docker-compose up -d && docker-compose logs -f"
-
 # Fix tmux problem on macOS Sierra
 export EVENT_NOKQUEUE=1
 
