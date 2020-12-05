@@ -103,4 +103,4 @@ if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-clo
 export DISPLAY=:0
 
 # Rust
-source "$HOME/.cargo/env"
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
