@@ -104,3 +104,6 @@ export DISPLAY=:0
 
 # Rust
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# Go
+export PATH="$HOME/go/bin:$PATH"
