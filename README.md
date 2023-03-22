@@ -7,6 +7,8 @@ My various dotfiles for macOS.
 1. Make sure the following files are backed up, if applicable:
   - `~/.gitignore`
   - `~/.bash_profile`
+  - `~/.zprofile`
+  - `~/.zsh_profile`
   - `~/.composer/composer.json`
   - `~/.composer/composer.lock`
 2. Run `./install`
