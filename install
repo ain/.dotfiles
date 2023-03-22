@@ -22,6 +22,18 @@ function install_bash_config {
   ln -s "$PWD/.bash_profile" "$path"
 }
 
+function install_zsh_config {
+  echo "  installing ZSH profile "
+  local readonly path="$HOME/.zprofile"
+  remove_config "$path"
+  ln -s "$PWD/.zprofile" "$path"
+
+  echo "  installing ZSH config "
+  local readonly path="$HOME/.zshrc"
+  remove_config "$path"
+  ln -s "$PWD/.zshrc" "$path"
+}
+
 function install_git_config {
   echo "  installing Git configuration "
   local readonly path="$HOME/.gitignore"
@@ -47,6 +59,7 @@ function install_compose_config {
 }
 
 install_bash_config
+install_zsh_config
 install_git_config
 install_compose_config
 
