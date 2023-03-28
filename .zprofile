@@ -17,3 +17,20 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 eval "$(rbenv init - zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
+
+# MacPorts Installer addition on 2020-12-02_at_01:05:43: adding an appropriate DISPLAY variable for use with MacPorts.
+export DISPLAY=:0
+
+# Rust
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# Go
+export PATH="$HOME/go/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
