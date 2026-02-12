@@ -1,3 +1,5 @@
+export LC_COLLATE=$LANG
+
 # enable console highlighting
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
