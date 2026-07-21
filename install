@@ -23,12 +23,17 @@ function install_bash_config {
 }
 
 function install_zsh_config {
-  echo "  installing ZSH profile "
+  echo "  installing ZSH env "
+  local readonly path="$HOME/.zshenv"
+  remove_config "$path"
+  ln -s "$PWD/.zshenv" "$path"
+
+  echo "  installing ZSH login shells "
   local readonly path="$HOME/.zprofile"
   remove_config "$path"
   ln -s "$PWD/.zprofile" "$path"
 
-  echo "  installing ZSH config "
+  echo "  installing ZSH interactive shells "
   local readonly path="$HOME/.zshrc"
   remove_config "$path"
   ln -s "$PWD/.zshrc" "$path"
