@@ -20,9 +20,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 eval "$(rbenv init - zsh)"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
-
 # MacPorts Installer addition on 2020-12-02_at_01:05:43: adding an appropriate DISPLAY variable for use with MacPorts.
 export DISPLAY=:0
 
