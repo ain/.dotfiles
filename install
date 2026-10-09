@@ -63,9 +63,23 @@ function install_compose_config {
   ln -s "$PWD/.composer/composer.lock" "$lockpath"
 }
 
+function install_herdr_config {
+  echo "  installing herdr config "
+
+  local readonly path="$HOME/.config/herdr"
+  local readonly tomlpath="$path/config.toml"
+
+  mkdir -p "$path"
+
+  remove_config "$tomlpath"
+
+  ln -s "$PWD/herdr/config.toml" "$tomlpath"
+}
+
 install_bash_config
 install_zsh_config
 install_git_config
 install_compose_config
+install_herdr_config
 
 echo "Installation finished!"
