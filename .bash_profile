@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/ain/.docker/bin"
+# End of Docker Desktop section.
+
 # enable console highlighting
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
