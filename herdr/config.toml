@@ -2,3 +2,9 @@ onboarding = false
 
 [theme]
 name = "terminal"
+
+[keys]
+next_agent = "prefix+a"
+
+[ui]
+agent_panel_sort = "priority"
