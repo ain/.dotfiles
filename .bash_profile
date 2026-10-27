@@ -80,9 +80,6 @@ claimspace() {
   echo -e "$COL_GREEN Space claim complete! $COL_RESET"
 }
 
-# Composer globals, e.g. Drush
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-
 # MacPorts
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
