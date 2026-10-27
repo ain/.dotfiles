@@ -47,22 +47,6 @@ function install_git_config {
   git config --global core.excludesfile "$path"
 }
 
-function install_compose_config {
-  echo "  installing Composer descriptors "
-
-  local readonly path="$HOME/.composer"
-  local readonly lockpath="$path/composer.lock"
-  local readonly jsonpath="$path/composer.json"
-
-  mkdir -p "$path"
-
-  remove_config "$lockpath"
-  remove_config "$jsonpath"
-
-  ln -s "$PWD/.composer/composer.json" "$jsonpath"
-  ln -s "$PWD/.composer/composer.lock" "$lockpath"
-}
-
 function install_herdr_config {
   echo "  installing herdr config "
 
@@ -79,7 +63,6 @@ function install_herdr_config {
 install_bash_config
 install_zsh_config
 install_git_config
-install_compose_config
 install_herdr_config
 
 echo "Installation finished!"

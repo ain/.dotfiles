@@ -9,8 +9,6 @@ My various dotfiles for macOS.
   - `~/.bash_profile`
   - `~/.zprofile`
   - `~/.zsh_profile`
-  - `~/.composer/composer.json`
-  - `~/.composer/composer.lock`
 2. Move to `.dotfiles` folder
 3. Run `./install`
 
